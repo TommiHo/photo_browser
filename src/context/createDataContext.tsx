@@ -1,8 +1,12 @@
+// Generic Context file. Allow any here
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import React, { useReducer } from "react";
 
 const createDataContext = (
-  reducer: any,
-  actions: { [key: string]: (dispatch: any) => any },
+  reducer: (state: any, action: { type: string; payload: any }) => any,
+  actions: any,
   initialState: any
 ): any => {
   const Context = React.createContext<any>(null);
@@ -13,7 +17,7 @@ const createDataContext = (
     children: [] | JSX.Element;
   }): JSX.Element => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const boundActions: { [key: string]: string } = {};
+    const boundActions: { [key: string]: Promise<void> } = {};
     for (const key in actions) {
       boundActions[key] = actions[key](dispatch);
     }

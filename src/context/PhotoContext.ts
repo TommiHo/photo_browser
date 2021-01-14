@@ -1,13 +1,14 @@
 import createDataContext from "./createDataContext";
 import api from "../api/api";
 import { AxiosResponse } from "axios";
+import { PhotoListType, PhotoType } from "../components/PhotoList";
 
 export type DispatchType = {
   type: string;
-  payload?: any;
+  payload?: PhotoType[];
 }
 
-const PhotosReducer = (state: any[], action: { type: any; payload: any; }) => {
+const PhotosReducer = (state: PhotoListType[], action: { type: string; payload: PhotoListType; }) => {
   switch (action.type) {
     case "get_photos":
       return state.concat(action.payload);
