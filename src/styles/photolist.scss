@@ -1,0 +1,16 @@
+@use "./variables.scss";
+
+.photolist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: variables.$spacing-m;
+  align-items: stretch;
+  justify-items: center;
+
+  &__image {
+    width: calc(25vw - #{variables.$spacing-m} * 2);
+  }
+}
