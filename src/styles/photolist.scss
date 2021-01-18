@@ -1,16 +1,25 @@
 @use "./variables.scss";
 
 .photolist {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: variables.$spacing-m;
   align-items: stretch;
   justify-items: center;
+  display: grid;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 
   &__image {
-    width: calc(25vw - #{variables.$spacing-m} * 2);
+    width: 100%;
+
+    @media (min-width: 600px) {
+      width: calc(25vw - #{variables.$spacing-m} * 2);
+
+    }
   }
 }

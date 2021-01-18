@@ -1,26 +1,39 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 export type PhotoType = {
   url: string;
+  id: number;
+  title: string;
+  thumbnailUrl: string;
+  albumId: number;
 };
 
 export type PhotoListType = {
   photos: PhotoType[];
 };
 
-const PhotoList = ({ photos }: PhotoListType): JSX.Element => {
+export default function PhotoList({
+  photos,
+}: {
+  photos: PhotoType[];
+}): JSX.Element {
+  const history = useHistory();
+
   return (
     <>
       <ul className="photolist">
-        {photos &&
+        {photos.length > 0 &&
           photos.map((photo, index) => (
-            <li className="photolist__item" key={index}>
-              <img className="photolist__image" src={photo.url}></img>
+            <li
+              className="photolist__item"
+              key={index}
+              onClick={() => history.push("/photo/" + photo.id)}
+            >
+              <img className="photolist__image" src={photo.thumbnailUrl}></img>
             </li>
           ))}
       </ul>
     </>
   );
-};
-
-export default PhotoList;
+}

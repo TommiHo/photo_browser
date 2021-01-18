@@ -1,10 +1,17 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import PhotoList from "./PhotoList";
-import { Context } from "../context/PhotoContext";
+import { Context, PhotosStateType } from "../context/PhotoContext";
+import Header from "./Header";
 
-const App = (): JSX.Element => {
-  const { state, getPhotos } = useContext(Context);
-  const [page, setPage] = useState(0);
+export default function PhotoGallery(): JSX.Element {
+  const {
+    state,
+    getPhotos,
+  }: {
+    state: PhotosStateType;
+    getPhotos: (paginationPage: number) => void;
+  } = useContext(Context);
+  const [page, setPage] = useState(1);
   const loader = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,10 +27,6 @@ const App = (): JSX.Element => {
     }
   }, []);
 
-  useEffect(() => {
-    getPhotos(page);
-  }, [page]);
-
   const handleObserver = (entities: IntersectionObserverEntry[]) => {
     const target = entities[0];
     if (target.isIntersecting) {
@@ -31,15 +34,15 @@ const App = (): JSX.Element => {
     }
   };
 
+  useEffect(() => {
+    getPhotos(page);
+  }, [page]);
+
   return (
     <>
-      <h1>Photo browser</h1>
-      <PhotoList photos={state} />
-      <div className="loading" ref={loader}>
-        <h2>Load More</h2>
-      </div>
+      <Header />
+      <PhotoList photos={state.photos} />
+      <div ref={loader}></div>
     </>
   );
-};
-
-export default App;
+}

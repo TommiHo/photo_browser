@@ -4,11 +4,11 @@
 
 import React, { useReducer } from "react";
 
-const createDataContext = (
+export default function createDataContext(
   reducer: (state: any, action: { type: string; payload: any }) => any,
   actions: any,
   initialState: any
-): any => {
+): any {
   const Context = React.createContext<any>(null);
 
   const Provider = ({
@@ -29,6 +29,4 @@ const createDataContext = (
   };
 
   return { Context, Provider };
-};
-
-export default createDataContext;
+}

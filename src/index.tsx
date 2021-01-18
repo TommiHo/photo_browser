@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider as PhotoProvider } from "./context/PhotoContext";
 
 import "./styles/index.scss";
-import App from "./components/App";
+import PhotoGallery from "./components/PhotoGallery";
+import SinglePhoto from "./components/SinglePhoto";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,8 +13,9 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/">
-            <App />
+            <PhotoGallery />
           </Route>
+          <Route path="/photo/:id" component={SinglePhoto} />
         </Switch>
       </Router>
     </PhotoProvider>
