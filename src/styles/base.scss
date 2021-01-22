@@ -1,7 +1,6 @@
 @use "./variables.scss";
 
 body {
-  margin: variables.$spacing-m;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -9,4 +8,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.header {
+  position: sticky;
+  display: flex;
+  top: 0;
+  background: white;
+  height: 100px;
+  z-index: 9999;
+  border-bottom: 1px solid grey;
+  align-items: center;
 
+  &__heading {
+    cursor: pointer;
+  }
+
+  &__logo {
+    margin: 0 variables.$spacing-m;
+  }
+}
+
+.error {
+  color: red;
+}

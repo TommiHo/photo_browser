@@ -1,0 +1,16 @@
+@use "./variables.scss";
+
+.singlephoto {
+  &__img {
+    margin: variables.$spacing-m;
+  }
+
+  &__details {
+    margin: variables.$spacing-m;
+    padding: variables.$spacing-m;
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: fit-content;
+    font-size: #{(22/16)}rem;
+  }
+}

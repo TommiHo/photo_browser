@@ -1,17 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
-export type PhotoType = {
-  url: string;
-  id: number;
-  title: string;
-  thumbnailUrl: string;
-  albumId: number;
-};
-
-export type PhotoListType = {
-  photos: PhotoType[];
-};
+import { PhotoType } from "../context/PhotoContext";
 
 export default function PhotoList({
   photos,
