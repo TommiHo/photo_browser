@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import Header from "./Header";
+import Header from "../components/Header";
 import { AlbumType, Context, PhotoType } from "../context/PhotoContext";
 import { useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
@@ -47,14 +47,18 @@ export default function SinglePhoto(): JSX.Element {
       <Header />
       {photoData && (
         <>
-          <img className="singlephoto__img" src={photoData.url}></img>
+          <img
+            alt={photoData.title}
+            className="singlephoto__img"
+            src={photoData.url}
+          />
           <div className="singlephoto__details">
             <p>
               <b>Title:</b> {photoData.title}
             </p>
             {albumData && (
               <p>
-                <b>Album title:</b> {albumData.title}
+                <b>Album: </b> {albumData.title}
               </p>
             )}
           </div>

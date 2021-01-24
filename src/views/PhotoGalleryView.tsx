@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
-import PhotoList from "./PhotoList";
+import PhotoList from "../components/PhotoList";
 import { Context, PhotosStateType } from "../context/PhotoContext";
-import Header from "./Header";
+import Header from "../components/Header";
 
 export default function PhotoGallery(): JSX.Element {
   const {
@@ -22,7 +22,7 @@ export default function PhotoGallery(): JSX.Element {
     };
 
     const observer = new IntersectionObserver(handleObserver, options);
-    if (loader.current) {
+    if (observer && loader.current) {
       observer.observe(loader.current);
     }
   }, []);

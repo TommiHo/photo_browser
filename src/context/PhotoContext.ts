@@ -5,12 +5,12 @@ import { AxiosResponse } from "axios";
 export type DispatchType = {
   type: string;
   payload?: PhotoType[];
-}
+};
 
 export type PhotosStateType = {
   photos: PhotoType[];
   singlePhoto: PhotoType;
-}
+};
 
 export type PhotoType = {
   url: string;
@@ -29,11 +29,13 @@ export type AlbumType = {
   id: number;
 };
 
-
-const PhotosReducer = (state: PhotosStateType, action: { type: string; payload: PhotoType[] | PhotoType; }) => {
+const PhotosReducer = (
+  state: PhotosStateType,
+  action: { type: string; payload: PhotoType[] | PhotoType }
+) => {
   switch (action.type) {
     case "get_photos":
-      return {...state, photos: state.photos.concat(action.payload)};
+      return { ...state, photos: state.photos.concat(action.payload) };
     default:
       return state;
   }
@@ -42,7 +44,9 @@ const PhotosReducer = (state: PhotosStateType, action: { type: string; payload: 
 const getPhotos = (dispatch: React.Dispatch<DispatchType>) => {
   return async (paginationPage: number) => {
     try {
-      const response: AxiosResponse = await api.get("/photos?_limit=50&_page=" + paginationPage);
+      const response: AxiosResponse = await api.get(
+        "/photos?_limit=50&_page=" + paginationPage
+      );
       if (response) {
         dispatch({ type: "get_photos", payload: response.data });
       }

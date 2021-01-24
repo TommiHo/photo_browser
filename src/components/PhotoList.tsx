@@ -19,7 +19,11 @@ export default function PhotoList({
               key={index}
               onClick={() => history.push("/photo/" + photo.id)}
             >
-              <img className="photolist__image" src={photo.thumbnailUrl}></img>
+              <img
+                alt={photo.title}
+                className="photolist__image"
+                src={photo.thumbnailUrl}
+              />
             </li>
           ))}
       </ul>

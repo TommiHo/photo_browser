@@ -3,6 +3,7 @@
 .singlephoto {
   &__img {
     margin: variables.$spacing-m;
+    max-width: calc(100% - #{variables.$spacing-m} * 2);
   }
 
   &__details {
