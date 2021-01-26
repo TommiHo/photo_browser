@@ -16,6 +16,7 @@
   &__image {
     width: 100%;
     transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
 
     &:hover {
       opacity: 0.8;

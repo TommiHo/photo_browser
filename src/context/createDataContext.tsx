@@ -1,4 +1,4 @@
-// Generic Context file. Allow any here
+// Generic Context file. Allow any type here
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 

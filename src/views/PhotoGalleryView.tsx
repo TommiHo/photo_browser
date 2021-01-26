@@ -11,6 +11,7 @@ export default function PhotoGallery(): JSX.Element {
     state: PhotosStateType;
     getPhotos: (paginationPage: number) => void;
   } = useContext(Context);
+
   const [page, setPage] = useState(1);
   const loader = useRef<HTMLDivElement>(null);
 
